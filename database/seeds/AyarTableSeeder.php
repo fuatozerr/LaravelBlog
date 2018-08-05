@@ -12,12 +12,14 @@ class AyarTableSeeder extends Seeder
      */
     public function run()
     {
-        Ayar::create(["name"=>"baslik","value"=>"Yazılım Dünyası"]);
-        Ayar::create(["name"=>"author","value"=>"Fuat Özer"]);
-        Ayar::create(["name"=>"aciklama","value"=>"Az kod çok iş"]);
-        Ayar::create(["name"=>"keywords","value"=>"yazılım,php,java"]);
-        Ayar::create(["name"=>"facebook","value"=>"http://www.facebook.com/fuatozerr"]);
-        Ayar::create(["name"=>"twitter","value"=>"http://www.twitter.com/fuatozerr"]);
-        Ayar::create(["name"=>"github","value"=>"http://www.github.com/fuatozerr"]);
+        //
+
+        Ayar::create(["name" => "baslik", "value" => "Yazılım Dünyası"]);
+        Ayar::create(["name" => "author", "value" => "Ahmet Kocabıyık"]);
+        Ayar::create(["name" => "aciklama", "value" => "Az kod çok iş..."]);
+        Ayar::create(["name" => "keywords", "value" => "yazılım,php,java"]);
+        Ayar::create(["name" => "facebook", "value" => "http://www.facebook.com"]);
+        Ayar::create(["name" => "twitter", "value" => "http://www.twitter.com"]);
+        Ayar::create(["name" => "github", "value" => "http://www.github.com"]);
     }
 }

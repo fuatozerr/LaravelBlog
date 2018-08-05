@@ -3,15 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Makale;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
 
     /**
      * Show the application dashboard.
@@ -20,6 +17,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('anasayfa');
+        $makaleler = Makale::where("durum",1)->orderBy("created_at","desc")->paginate(10);
+        return view('anasayfa',compact('makaleler'));
     }
 }

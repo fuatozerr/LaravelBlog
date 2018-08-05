@@ -32,7 +32,7 @@ $(function(){
     {
         case 0 :
             toastr.error('Hata oluştu');
-     wqsaaaaaaaaa       break;
+            break;
         case 1 :
             toastr.success('İşlem başarılı.');
             break;

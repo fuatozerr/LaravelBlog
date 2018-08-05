@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'fuatozerr23@gmail.com', 'name' => "Yazılım Dünyası"],
+    'from' => ['address' => 'ahmetkocabiyik@gmail.com', 'name' => "Yazılım Dünyası"],
 
     /*
     |--------------------------------------------------------------------------

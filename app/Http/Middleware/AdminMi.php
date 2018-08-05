@@ -21,9 +21,11 @@ class AdminMi
             if(Auth::user()->yetkisi_var_mi("admin"))
             {
                 return $next($request);
-
             }
+
         }
+
         return redirect("/login");
+
     }
 }

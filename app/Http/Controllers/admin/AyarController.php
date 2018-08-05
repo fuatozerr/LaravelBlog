@@ -11,8 +11,11 @@ use Illuminate\Support\Facades\Session;
 
 class AyarController extends Controller
 {
-    public function index(){
-        $ayarlar=Ayar::all();
+    //
+
+    public function index()
+    {
+        $ayarlar = Ayar::all();
 
         return view("admin.site_ayarlari",compact("ayarlar"));
     }

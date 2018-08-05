@@ -19,8 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-
-        $users = User::paginate(100);
+        //
+        $users = User::paginate(10);
         return view("admin.user_index",compact('users'));
     }
 
@@ -64,10 +64,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user=User::find($id);
+        //
 
+        $user = User::find($id);
         return view("admin.user_edit",compact('user'));
-
     }
 
     /**
@@ -79,8 +79,10 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        //
         $this->validate($request,[
-            "name" => "required|max:255",
+           "name" => "required|max:255",
             "email" => "required|email|unique:users,email,".$id,
             "password" => !empty($request->password) ? "required|min:6" : ""
         ]);
@@ -118,6 +120,8 @@ class UserController extends Controller
 
         return redirect("/user");
 
+
+
     }
 
     /**
@@ -128,7 +132,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        //
+
         User::destroy($id);
-        return redirect('/');
+
+        Session::flash("durum",1);
+
+        return redirect("/user");
+
     }
 }

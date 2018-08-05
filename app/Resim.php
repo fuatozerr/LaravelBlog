@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Resim extends Model
 {
-    protected $table="resimler";
+    //
+    protected $table = "resimler";
 
-    protected $fillable=["isim"];
+    protected $fillable = ["isim","imageable_id","imageable_type"];
 }

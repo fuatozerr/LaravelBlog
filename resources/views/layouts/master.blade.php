@@ -31,6 +31,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <link href="{{asset("css/custom.css")}}" rel="stylesheet">
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -38,20 +39,23 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script>
+        window.csrfToken = "{{ csrf_token() }}"
+    </script>
 </head>
 
-<body >
+<body data-status="{{Session::get("durum")}}">
 
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container fluid" id="topbar">
+    <div class="container-fluid" id="topbar">
         <div class="row">
             <div class="col-md-12">
                 <ul>
                     <li><a href="/"><i class="fa fa-home"></i>Ana Sayfa</a></li>
                     @if(Auth::guest())
-                        <li><a href="/login" class="uyelik-tus"><i class="fa fa-sign-in"></i> Üye Girişi</a></li>
-                        <li><a href="/register" class="uyelik-tus"><i class="fa fa-users"></i> Üye Ol</a></li>
+                    <li><a href="/login" class="uyelik-tus"><i class="fa fa-sign-in"></i> Üye Girişi</a></li>
+                    <li><a href="/register" class="uyelik-tus"><i class="fa fa-users"></i> Üye Ol</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -81,8 +85,6 @@
                 </ul>
             </div>
         </div>
-
-
     </div>
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -91,24 +93,17 @@
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="/">Yazılım</a>
+            <a class="navbar-brand" href="/">{!! config("ayarlar.baslik") !!}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-                <li>
-                    <a href="post.html">Sample Post</a>
-                </li>
-                <li>
-                    <a href="contact.html">Contact</a>
-                </li>
+               @foreach(App\Kategori::all() as $kategori)
+                   <li>
+                       <a href="/yayinlanan-kategori/{{$kategori->slug}}">{{$kategori->baslik}}</a>
+                   </li>
+                   @endforeach
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -118,9 +113,7 @@
 
 @yield('icerik')
 
-
 <hr>
-
 <!-- Footer -->
 <footer>
     <div class="container">
@@ -152,7 +145,7 @@
                         </a>
                     </li>
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                <p class="copyright text-muted">Copyright &copy; Tüm Hakları Saklıdır Fuat Özer </p>
             </div>
         </div>
     </div>
