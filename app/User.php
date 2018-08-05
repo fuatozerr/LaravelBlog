@@ -27,14 +27,13 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany("App\Role","role_user");
-
     }
 
     public function yetkisi_var_mi($yetki)
     {
-        foreach ($this->roles()->get() as $role)
+        foreach($this->roles()->get() as $role)
         {
-            if($role->name ==$yetki)
+            if($role->name == $yetki)
             {
                 return true;
                 break;
@@ -42,4 +41,8 @@ class User extends Authenticatable
         }
         return false;
     }
+
+
+
+
 }
