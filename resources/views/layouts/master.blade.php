@@ -40,7 +40,7 @@
 
 </head>
 
-<body>
+<body >
 
 <!-- Navigation -->
 <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -91,7 +91,7 @@
                 <span class="sr-only">Toggle navigation</span>
                 Menu <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="/">{!! config("ayarlar.baslik") !!}</a>
+            <a class="navbar-brand" href="/">Yazılım</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
