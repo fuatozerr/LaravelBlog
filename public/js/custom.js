@@ -1,13 +1,13 @@
-// /**
-//  * Created by ahmetbusra on 30.09.2016.
-//  */
-//
-// $.ajaxSetup({
-//     headers: {
-//         'X-CSRF-TOKEN':csrfToken
-//     }
-// });
-//
+/**
+ * Created by ahmetbusra on 30.09.2016.
+ */
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN':csrfToken
+    }
+});
+
 $(function(){
     toastr.options = {
         "closeButton": true,
@@ -47,42 +47,42 @@ $(function(){
 
 
     }
-//     //
-//     $('[data-toggle="tooltip"]').tooltip();
-//
-//
-//
-//     $('.summernote').summernote({
-//         height: 300,
-//         lang: 'tr-TR'
-//     });
-//
-//     $('.selectpicker').selectpicker({
-//         style: 'btn-default'
-//     });
-//     //
-//     $(".durum").bootstrapSwitch();
-//     //
-//
-//     $(".durum").on('switchChange.bootstrapSwitch', function(event, state) {
-//         console.log(this); // DOM element
-//         console.log(event); // jQuery event
-//         console.log(state); // true | false
-//
-//         $.ajax({
-//             data: {"durum": state,"id":$(this).data("id") },
-//             type: "POST",
-//             url: $(this).data("url"),
-//
-//             success: function(url) {
-//                 //alert('Success');
-//
-//             }
-//         });
-//     });
-//
-//
-//
-//
-//
-// })
+    //
+    $('[data-toggle="tooltip"]').tooltip();
+
+
+
+    $('.summernote').summernote({
+        height: 300,
+        lang: 'tr-TR'
+    });
+
+    $('.selectpicker').selectpicker({
+        style: 'btn-default'
+    });
+    //
+    $(".durum").bootstrapSwitch();
+    //
+
+    $(".durum").on('switchChange.bootstrapSwitch', function(event, state) {
+        console.log(this); // DOM element
+        console.log(event); // jQuery event
+        console.log(state); // true | false
+
+        $.ajax({
+            data: {"durum": state,"id":$(this).data("id") },
+            type: "POST",
+            url: $(this).data("url"),
+
+            success: function(url) {
+                //alert('Success');
+
+            }
+        });
+    });
+
+
+
+
+
+})

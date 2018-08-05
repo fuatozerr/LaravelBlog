@@ -7,6 +7,8 @@ use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -18,7 +20,7 @@ class UserController extends Controller
     public function index()
     {
 
-        $users = User::paginate(10);
+        $users = User::paginate(100);
         return view("admin.user_index",compact('users'));
     }
 
@@ -62,7 +64,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user=User::find($id);
+
+        return view("admin.user_edit",compact('user'));
+
     }
 
     /**
@@ -74,7 +79,45 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            "name" => "required|max:255",
+            "email" => "required|email|unique:users,email,".$id,
+            "password" => !empty($request->password) ? "required|min:6" : ""
+        ]);
+
+        if(!empty($request->password))
+        {
+            $input = $request->all();
+            $input["password"] = bcrypt($request->password);
+
+            User::find($id)->update($input);
+
+        }
+        else
+        {
+            User::find($id)->update([
+                "name" => $request->name,
+                "email" => $request->email
+            ]);
+        }
+
+        // Rol User Tablosundaki Update İşlemi
+        DB::table("role_user")->where("user_id",$id)->delete();
+
+        $roller = [];
+
+        foreach($request->rol as $rol)
+        {
+            $yeni_rol = ["role_id" => $rol, "user_id" => $id];
+            array_push($roller,$yeni_rol);
+        }
+
+        DB::table("role_user")->insert($roller);
+
+        Session::flash("durum",1);
+
+        return redirect("/user");
+
     }
 
     /**
@@ -85,6 +128,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect('/');
     }
 }
